@@ -1,7 +1,23 @@
+import { useState } from 'react'
 import './App.css'
 
+const INITIAL_ITEMS = [
+  {
+    id: crypto.randomUUID(),
+    timestamp: new Date(),
+    text: 'Videojuegos',
+  },
+  {
+    id: crypto.randomUUID(),
+    timestamp: new Date(),
+    text: 'Libros'
+  }
+]
+
 function App() {
-  
+  cosnt [items, setItems] = useState(INITIAL_ITEMS)
+
+
   return (
     <main>
       <aside>
@@ -17,6 +33,7 @@ function App() {
               placeholder='Videojuegos'
               />
           </label>
+          <button>Añadir elemento a la lista</button>
         </form>
       </aside>
       <section>
