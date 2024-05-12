@@ -36,6 +36,7 @@ function App() {
     const newItem: Item = {
       id: crypto.randomUUID(),
       text: input.value,
+      timestamp: Date.now()
     }
 
     setItems((prevItems) => {
@@ -72,6 +73,13 @@ function App() {
               return(
                 <li key={item.id}>
                   {item.text}
+                  <button onClick={() => {
+                    setItems(prevItems => {
+                      return prevItems.filter(currentItem => currentItem.id !== item.id)
+                    })
+                  }}>
+                    Eliminar elemento
+                  </button>
                   </li>
               )
             })
