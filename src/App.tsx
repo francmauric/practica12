@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 
+type ItemId = `${string}-${string}-${string}-${string}-${string}`
+
 interface Item {
-  id:`${string}-${string}-${string}-${string}-${string}`
+  id:ItemId
   timestamp: number
   text: string
 }
@@ -46,6 +48,12 @@ function App() {
     input.value = ''
   }
 
+  const createHandleRemoveItem = (id: ItemId) => () => { 
+    setItems(prevItems => {
+      return prevItems.filter(currentItems => currentItems.id !== id)
+    })
+  }
+
 
   return (
     <main>
@@ -67,17 +75,21 @@ function App() {
       </aside>
       <section>
         <h2>Lista de elementos</h2>
+
+        {
+          items.length === 0 ? (
+            <p>
+              <strong>No hay elementos en la lista</strong>
+            </p>  
+          ) : (
+        
         <ul>
           {
             items.map((item) => {
               return(
                 <li key={item.id}>
                   {item.text}
-                  <button onClick={() => {
-                    setItems(prevItems => {
-                      return prevItems.filter(currentItem => currentItem.id !== item.id)
-                    })
-                  }}>
+                  <button onClick={createHandleRemoveItem(item.id)}>
                     Eliminar elemento
                   </button>
                   </li>
@@ -85,6 +97,8 @@ function App() {
             })
           }
         </ul>
+          )
+          }
       </section>
     </main>
   )
