@@ -60,7 +60,7 @@ function App() {
       <aside>
         <h1>practica</h1>
         <h2>añadir y eliminar elementos de una lista</h2>
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit} aria-label='Añadir informacion'>
           <label >
             Elemento a introducir:
             <input 
