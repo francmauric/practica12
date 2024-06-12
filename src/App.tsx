@@ -10,7 +10,7 @@ interface Item {
 }
 
 
-const INITIAL_ITEMS: Item[] = [
+/* const INITIAL_ITEMS: Item[] = [
   {
     id: crypto.randomUUID(),
     timestamp: Date.now(),
@@ -21,10 +21,10 @@ const INITIAL_ITEMS: Item[] = [
     timestamp: Date.now(),
     text: 'Libros'
   }
-]
+] */
 
 function App() {
-  const [items, setItems] = useState(INITIAL_ITEMS)
+  const [items, setItems] = useState<Item[]>([])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()

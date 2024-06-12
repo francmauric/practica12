@@ -15,8 +15,8 @@ describe('<App />', () => {
          ).toBeDefined()
 
       }) */
-    test('should add items and remove them', () => {
-      const user = userEvent.setup() 
+    test('should add items and remove them', async () => {
+      /* const user = userEvent.setup() 
 
       render(<App />)
 
@@ -27,6 +27,21 @@ describe('<App />', () => {
       //buscar el form
       const form = screen.getByRole('form')
       expect(form).toBeDefined()
+
+      //podemos buscar por button
+      const button = form.querySelector('button')
+      expect(button).toBeDefined()
+
+      await user.type(input, 'midudev')
+      await user.click(button!) */
+
+      //asegurar que el elemento se ha agregado
+      const list = screen.getByRole('list')
+      expect(list).toBeDefined()
+
+      screen.debug()
+      expect(list.childNodes.length).toBe(1)
+
     })
 
 
