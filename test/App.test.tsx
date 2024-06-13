@@ -16,9 +16,9 @@ describe('<App />', () => {
 
       }) */
     test('should add items and remove them', async () => {
-      /* const user = userEvent.setup() 
-
       render(<App />)
+      const user = userEvent.setup() 
+
 
       //buscar el input
       const input = screen.getByRole('textbox')
@@ -32,15 +32,26 @@ describe('<App />', () => {
       const button = form.querySelector('button')
       expect(button).toBeDefined()
 
-      await user.type(input, 'midudev')
-      await user.click(button!) */
+      
+
+      const randomText = crypto.randomUUID()
+      await user.type(input, randomText)
+      await user.click(button!)
 
       //asegurar que el elemento se ha agregado
       const list = screen.getByRole('list')
       expect(list).toBeDefined()
-
-      screen.debug()
       expect(list.childNodes.length).toBe(1)
+
+      //asegurarnos que lo podemos borrar
+      const item = screen.getByText(randomText)
+      const removeButton = item.querySelector('button')
+      expect(removeButton).toBeDefined()
+
+      await user.click(removeButton!)
+
+      const noResults = screen.getByText('No hay elementos en la lista')
+      expect(noResults).toBeDefined()
 
     })
 
